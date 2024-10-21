@@ -16,4 +16,5 @@ use App\Http\Controllers\TaskController;
 
 Route::get('/',[TaskController::class, 'index'])->name('index');
 Route::get('tache/creer',[TaskController::class, 'create'])->name('create');
+Route::post('tache/creer-post',[TaskController::class, 'store'])->name('store');
 
