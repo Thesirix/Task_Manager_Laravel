@@ -15,7 +15,7 @@
         @endif
         <div class="mb-3">
             <label for="title" class="form-label">Titre</label>
-            <input type="text" @if(!empty($task)) value="{{ old('title',$task->title) }}   @endif "name="title" class="form-control" id="title">
+            <input type="text" @if(!empty($task)) value="{{ old('title',$task->title) }} " @endif name="title" class="form-control" id="title">
         </div>
 
         <div class="mb-3">

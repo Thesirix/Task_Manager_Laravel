@@ -60,4 +60,11 @@ public function update(request $req,int $id ){
 }
 
 
+
+public function destroy(int $id){
+    Task::where('id',$id)->delete();
+
+    return redirect()->route('index')->with('sucess','Tache suprimé avec succes');
+    }
+
 }
