@@ -8,8 +8,9 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     public function index(){
+        $tasks = Task::all();
 
-        return view('tasks_view.index');
+        return view('tasks_view.index',compact('tasks'));
     }
 
 
@@ -33,4 +34,30 @@ class TaskController extends Controller
         ]);
         return redirect()->route('index')->with('sucess','Tache enregistre avec succes');
     }
+
+    public function edit(int $id){
+        $task =Task::where('id',$id)->first();
+        // dd($task);
+        return view('tasks_view.create',compact('task')); 
+    }
+
+
+public function update(request $req,int $id ){
+    $req->validate([
+        'title'=> 'string|max:255|required',
+        'description'=>'string|max:1000|required'
+    ]);
+
+    $task =Task::where('id',$id)->first();
+    $task->update([
+        'title'=>$req->title,
+        'description'=>$req->description,
+        'status'=> $req->status == "on" ? 1 : 0
+    ]);
+
+
+    return redirect()->route('index')->with('sucess','Tache modifiée avec succes');
+}
+
+
 }
