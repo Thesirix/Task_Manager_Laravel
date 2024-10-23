@@ -1,7 +1,12 @@
 @extends('tasks_view.app')
 
 @section('content')
-<a href="{{ route("create") }}" class="btn btn-primary">Ajouter une tache</a>
+<a href="{{ route("task.create") }}" class="btn btn-primary">Ajouter une tache</a>
+
+{{-- @if(session('success'))
+
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif --}}
 
 
 
@@ -30,8 +35,8 @@
 
                 </td>
                 <td>
-                    <a href="{{ route("edit",$task->id) }}" class="btn btn-info">Modifier</a>
-                    <form action="{{ route('destroy',$task->id) }}" method="post" style="display: inline">
+                    <a href="{{ route("task.edit",$task->id) }}" class="btn btn-info">Modifier</a>
+                    <form action="{{ route("task.destroy",$task->id) }}" method="post" style="display: inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger" onclick="return confirm('voulez vous vraiment suprimer?')">Supprimer</a>

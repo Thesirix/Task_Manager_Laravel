@@ -8,7 +8,7 @@
             modification
         @endif d'une tache
     </h2>
-    <form action="{{ empty($task) ? route('store') : route('update',$task->id)}}" method="post">
+    <form action="{{ empty($task) ? route("task.store") : route("task.update",$task->id)}}" method="post">
         @csrf
         @if(!empty($task))
         @method('PUT')
